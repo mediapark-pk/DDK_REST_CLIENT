@@ -1,7 +1,7 @@
 import { PAGINATION_SCHEME } from "./pagination";
 
 export const getStakeRewards={
-    id: "/api/reward/getStakeRewards",
+    id: "POST /api/reward/getStakeRewards",
     type: 'object',
     properties: {
         senderPublicKey: {
@@ -22,7 +22,7 @@ export const getStakeRewards={
 }
 
 export const getReferredUsersRewards={
-    id: "/api/reward/getReferredUsersReward",
+    id: "POST /api/reward/getReferredUsersReward",
     type: 'object',
     properties: {
         address: {

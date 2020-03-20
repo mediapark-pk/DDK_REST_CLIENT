@@ -3,6 +3,6 @@ import { rewardController } from 'src/controller/reward';
 
 export const rewardRouter = express.Router();
 
-rewardRouter.get('/getReferredUsersReward',rewardController.getReferredUsersRewards);
-rewardRouter.get('/getStakeRewards',rewardController.getStakeRewards);
+rewardRouter.post('/getReferredUsersReward',rewardController.getReferredUsersRewards);
+rewardRouter.post('/getStakeRewards',rewardController.getStakeRewards);
 

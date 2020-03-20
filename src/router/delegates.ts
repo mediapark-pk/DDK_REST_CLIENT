@@ -4,7 +4,7 @@ import { delegatesController } from 'src/controller/delegates';
 
 export const delegatesRouter = express.Router();
 
-delegatesRouter.get('/',delegatesController.getDelegates);
-delegatesRouter.get('/activeDelegates', delegatesController.getActiveDelegates);
-delegatesRouter.get('/myDelegates', delegatesController.getMydelegates);
+delegatesRouter.post('/',delegatesController.getDelegates);
+delegatesRouter.post('/activeDelegates', delegatesController.getActiveDelegates);
+delegatesRouter.post('/myDelegates', delegatesController.getMydelegates);
 

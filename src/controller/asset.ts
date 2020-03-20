@@ -7,8 +7,7 @@ import { validate } from "src/util/validate";
 export class AssetController {
   @validate
   async createStakeAsset(req: Request, res: Response): Promise<Response> {
-    console.log("asset body",req.body)
-    console.log("asset params",req.params)
+ 
     const response = await nodePool.send(
       API_ACTION_TYPES.CREATE_STAKE_ASSET,
       req.body
@@ -18,7 +17,6 @@ export class AssetController {
 
   // @validate
   async createVoteAsset(req: Request, res: Response): Promise<Response> {
-    console.log("data get",req.body);
       
     const response = await nodePool.send(
       API_ACTION_TYPES.CREATE_VOTE_ASSET,

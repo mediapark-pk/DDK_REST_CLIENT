@@ -16,8 +16,6 @@ export class DelegatesController {
 
   @validate
   async getActiveDelegates(req: Request, res: Response): Promise<Response> {
-    console.log("data get",req.params);
-      
     const response = await nodePool.send(
       API_ACTION_TYPES.GET_ACTIVE_DELEGATES,
       req.params
@@ -26,9 +24,7 @@ export class DelegatesController {
   }
 
   @validate
-async getMydelegates(req: Request, res: Response): Promise<Response> {
-  console.log("data get",req.params);
-    
+async getMydelegates(req: Request, res: Response): Promise<Response> {    
   const response = await nodePool.send(
     API_ACTION_TYPES.GET_MY_DELEGATES,
     req.params
