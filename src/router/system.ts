@@ -5,7 +5,7 @@ import { systemController } from 'src/controller/system';
 export const systemRouter = express.Router();
 
 systemRouter.get('/info', systemController.getInfo);
-systemRouter.get('/getAccountHistory',systemController.getAccountHistory)
+systemRouter.get('/getAccountHistory/:address',systemController.getAccountHistory)
 systemRouter.get('/:id',systemController.getBlockHistory)
-systemRouter.get('/getUnconfirmedTransactionHistory',systemController.getAllUnconfirmedTransactions)
-systemRouter.get('/getTransactionHistiory',systemController.getTransactionHistory)
+systemRouter.post('/getUnconfirmedTransactionHistory',systemController.getAllUnconfirmedTransactions)
+systemRouter.get('/getTransactionHistiory:/id',systemController.getTransactionHistory)

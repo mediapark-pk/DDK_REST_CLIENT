@@ -1,6 +1,6 @@
 export const getReferredUsers={
     
-        id: "/api/referredusers/",
+        id: "POST /api/referredUsers/",
         type: 'object',
         properties: {
             address: {

@@ -20,3 +20,15 @@ export const getblocksScheme = {
     },
     required: ['limit', 'offset'],
 };
+export const getblockByHeight = {
+
+    id: 'GET /api/blocks/getByHeight/:height',
+    type: 'object',
+    properties: {
+        height: {
+            type: 'integer',
+            minimum: 1
+        },
+    },
+    required: ['height']
+}

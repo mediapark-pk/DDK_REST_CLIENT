@@ -98,7 +98,7 @@ export class NodePool extends Emitter<NodePoolAction> {
             console.log(`[NodePool][send] Primary node is missing. Repick`);
             this.repickPrimary();
         }
-        console.log(data)
+        // console.log(data)
         const response = await this.primary.socket.send<Data, Response>(
             code,
             data,

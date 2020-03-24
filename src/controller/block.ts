@@ -18,6 +18,14 @@ export class BlockController {
         return res.send(response);
     }
 
+    async getByHeight(req: Request, res: Response): Promise<Response> {
+        req.params.height=parseInt(req.params.height)
+        const response = await nodePool
+            .send<{ height: number }, Block>(API_ACTION_TYPES.GET_BLOCK_BY_HEIGHT, req.params);
+
+        return res.send(response);
+    }
+
     @validate
     async getMany(req: Request, res: Response): Promise<Response> {
         const response = await nodePool
