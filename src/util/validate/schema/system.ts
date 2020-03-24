@@ -2,7 +2,7 @@ import { PAGINATION_SCHEME } from "./pagination"
 
 export const getBlockHistory={
     
-        id: 'GET /api/system/blockHistory:/id',
+        id: 'GET /api/system/:id',
         type: 'object',
         properties: {
             id: {
@@ -16,7 +16,7 @@ export const getBlockHistory={
 
 export const getAllUnconfirmedTransactions= 
 {
-    id: "GET /api/system/getUnconfirmedTransactionHistory",
+    id: "POST /api/system/getUnconfirmedTransactionHistory",
     type: 'object',
     properties: {
         ...PAGINATION_SCHEME,
@@ -30,7 +30,7 @@ export const getAllUnconfirmedTransactions=
 
 export const getTransactionHistory= 
 {
-    id: "GET /api/system/getTransactionHistiory",
+    id: "GET /api/system/getTransactionHistiory/:id",
     type: 'object',
     properties: {
         id: {
@@ -43,7 +43,7 @@ export const getTransactionHistory=
 
 export const getAccountHistory=
 {
-    id: "GET /api/system/getAccountHistory",
+    id: "GET /api/system/getAccountHistory/:address",
     type: 'object',
     properties: {
         address: {

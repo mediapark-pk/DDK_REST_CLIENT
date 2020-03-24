@@ -1,5 +1,5 @@
 export const getAirdropRewardHistory = {
-  id: "GET /api/airdrop/",
+  id: "POST /api/airdrop/",
   type: "object",
   properties: {
     referralAddress: {

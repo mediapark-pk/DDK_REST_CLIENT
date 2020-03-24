@@ -7,3 +7,5 @@ export const blockRouter = express.Router();
 blockRouter.post('/getMany', blockController.getMany);
 blockRouter.get('/last', blockController.getLast);
 blockRouter.get('/:id', blockController.getById);
+blockRouter.get('/getByHeight/:height', blockController.getByHeight);
+

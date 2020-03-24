@@ -15,9 +15,7 @@ export class AirdropHistoryController {
   }
 
   @validate
-  async getAirdropDailyHistory(req: Request, res: Response): Promise<Response> {
-    console.log("data get",req.params);
-      
+  async getAirdropDailyHistory(req: Request, res: Response): Promise<Response> {      
     const response = await nodePool.send(
       API_ACTION_TYPES.GET_AIRDROP_REWARD_DAILY_HISTORY,
       req.params

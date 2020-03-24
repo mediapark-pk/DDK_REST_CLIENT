@@ -4,7 +4,6 @@ import { nodePool } from "src/service";
 import { validate } from "src/util/validate";
 
 export class RoundController {
-  @validate
   async GetCurrentRound(req: Request, res: Response): Promise<Response> {
     const response = await nodePool.send(
       API_ACTION_TYPES.GET_CURRENT_ROUND,
@@ -24,6 +23,7 @@ export class RoundController {
 
   @validate
   async getRounds(req: Request, res: Response): Promise<Response> {
+    console.log("get rounds", req.body);
     const response = await nodePool.send(
       API_ACTION_TYPES.GET_ROUNDS,
       req.body

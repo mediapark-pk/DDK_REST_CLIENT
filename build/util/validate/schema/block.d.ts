@@ -24,3 +24,14 @@ export declare const getblocksScheme: {
     };
     required: string[];
 };
+export declare const getblockByHeight: {
+    id: string;
+    type: string;
+    properties: {
+        height: {
+            type: string;
+            minimum: number;
+        };
+    };
+    required: string[];
+};

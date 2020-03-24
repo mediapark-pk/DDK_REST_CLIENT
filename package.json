@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.prod.js",
     "watch": "webpack --watch",
-    "serve":"npm run build && npm run nodemon",
+    "serve": "npm run build && npm run nodemon",
     "nodemon": "sleep 5 && nodemon \"./dist/bundle.js\"",
     "debug": "npm run watch & sleep 5 && nodemon --inspect=0.0.0.0:9229 \"./dist/bundle.js\"",
     "start": "npm run watch & npm run nodemon",
