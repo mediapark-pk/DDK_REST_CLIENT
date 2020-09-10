@@ -13,6 +13,7 @@ import { systemRouter } from 'src/router/system';
 import { blockchainRouter } from 'src/router/blockchain';
 import { airdropRouter } from './router/airdropHistory';
 import { assetRouter } from './router/asset';
+import { delegatesRouter } from './router/delegates';
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api/transactions', transactionRouter);
 app.use('/api/blocks', blockRouter);
 app.use('/api/accounts', accountRouter);
+app.use('/api/delegates', delegatesRouter);
 app.use('/api/utils', utilRouter);
 app.use('/api/webhook', webhookRouter);
 app.use('/api/blockchain', blockchainRouter);
