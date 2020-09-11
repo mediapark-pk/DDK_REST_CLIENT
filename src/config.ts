@@ -5,7 +5,7 @@ import { DEFAULT_NUMBER_OF_CONFIRMATIONS } from 'src/const';
 
 dotenv.config();
 
-const workspace = WORKSPACE['0'];
+const workspace = WORKSPACE[process.env.WORKSPACE];
 if (!workspace) {
     throw new Error(`[Config] Unknown workspace: ${process.env.WORKSPACE}`);
 }
