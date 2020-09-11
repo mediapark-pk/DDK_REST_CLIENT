@@ -5,7 +5,6 @@ export const getDelegates=
     id: 'GET /api/delegates/',
     type: 'object',
     properties: {
-        
         username: {
             type: 'string',
             minLength: 3,

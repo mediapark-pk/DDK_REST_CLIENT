@@ -5,7 +5,7 @@ import { DEFAULT_NUMBER_OF_CONFIRMATIONS } from 'src/const';
 
 dotenv.config();
 
-const workspace = WORKSPACE[process.env.WORKSPACE];
+const workspace = WORKSPACE['0'];
 if (!workspace) {
     throw new Error(`[Config] Unknown workspace: ${process.env.WORKSPACE}`);
 }
@@ -24,15 +24,15 @@ DDK.initialize(workspace);
 BigInt.prototype.toJSON = function () {
     return this.toString();
 };
+// const node_host = '185.244.248.16:7008'
+// if (process.env.NODE_HOST || process.env.NODE_API_PORT) {
+//     const errorMessage = `Please, update the list of nodes in .env file by instruction: ` +
+//         `https://github.com/AraiEzzra/DDK.REST.API.CLIENT/blob/master/docs/environment.md#ddk-node-hosts ` +
+//         `and remove NODE_HOST, NODE_API_PORT environments`;
+//     throw new Error(errorMessage);
+// }
 
-if (process.env.NODE_HOST || process.env.NODE_API_PORT) {
-    const errorMessage = `Please, update the list of nodes in .env file by instruction: ` +
-        `https://github.com/AraiEzzra/DDK.REST.API.CLIENT/blob/master/docs/environment.md#ddk-node-hosts ` +
-        `and remove NODE_HOST, NODE_API_PORT environments`;
-    throw new Error(errorMessage);
-}
-
-const NODE_HOSTS_ENV = process.env.NODE_HOSTS;
+const NODE_HOSTS_ENV = '185.244.248.16:7008';
 if (!NODE_HOSTS_ENV) {
     throw new Error(`[Config] NODE_HOSTS is missing`);
 } else {
