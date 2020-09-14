@@ -2,7 +2,7 @@ import { PAGINATION_SCHEME } from "./pagination"
 
 export const getDelegates=
 {
-    id: 'GET /api/delegates/',
+    id: 'POST /api/delegates/',
     type: 'object',
     properties: {
         username: {
@@ -25,7 +25,7 @@ export const getDelegates=
 }
 
 export const getActiveDelegates={
-    id: 'GET /api/delegates/activeDelegates',
+    id: 'POST /api/delegates/activeDelegates',
     type: 'object',
     properties: {
         limit: {
@@ -43,7 +43,7 @@ export const getActiveDelegates={
 }
 
 export const getMyDelgates={
-    id: '/api/delegates/myDelegates',
+    id: 'POST /api/delegates/myDelegates',
     type: 'object',
     properties: {
         

@@ -9,6 +9,16 @@ export class BlockchainController {
 
         return res.send(new ResponseEntity({ data }));
     }
+    getCirulatingSupply(_req: Request, res: Response):Response{
+        const data1 = blockchainRepository.getInfo();
+        const data = data1.circulatingSupply
+        return res.send(new ResponseEntity({data}))
+    }
+    getTotalSupply(_req: Request, res: Response):Response{
+        const data1 = blockchainRepository.getInfo();
+        const data = data1.totalSupply
+        return res.send(new ResponseEntity({data}))
+    }
 }
 
 export const blockchainController = new BlockchainController();
