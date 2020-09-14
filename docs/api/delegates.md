@@ -129,7 +129,7 @@ Response
 | success   | boolean                                         | Operation status                 |
 | data      | [Delegates ](../models.md#delegate)             | Delegates information            |
 
-### GET Active Delegates EXAMPLES
+### GET My Delegates EXAMPLES
 
 Successful response
 
