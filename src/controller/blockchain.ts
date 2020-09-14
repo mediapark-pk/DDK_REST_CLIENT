@@ -10,14 +10,24 @@ export class BlockchainController {
         return res.send(new ResponseEntity({ data }));
     }
     getCirulatingSupply(_req: Request, res: Response):Response{
-        const data1 = blockchainRepository.getInfo();
-        const data = data1.circulatingSupply
-        return res.send(new ResponseEntity({data}))
+        const data = blockchainRepository.getInfo();
+        const data1 = {
+            'success': true,
+            'data':{
+            'circulatingSupply': data.circulatingSupply
+            }
+        }
+        return res.send(({data1}))
     }
     getTotalSupply(_req: Request, res: Response):Response{
-        const data1 = blockchainRepository.getInfo();
-        const data = data1.totalSupply
-        return res.send(new ResponseEntity({data}))
+        const data = blockchainRepository.getInfo();
+        const data1 = {
+            'success': true,
+            'data': {
+                'totalSupply': data.totalSupply
+            }
+        }
+        return res.send(({data1}))
     }
 }
 
