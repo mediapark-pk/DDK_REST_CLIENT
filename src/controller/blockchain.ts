@@ -17,7 +17,7 @@ export class BlockchainController {
             'circulatingSupply': data.circulatingSupply
             }
         }
-        return res.send(({data1}))
+        return res.send(data1)
     }
     getTotalSupply(_req: Request, res: Response):Response{
         const data = blockchainRepository.getInfo();
@@ -27,7 +27,7 @@ export class BlockchainController {
                 'totalSupply': data.totalSupply
             }
         }
-        return res.send(({data1}))
+        return res.send(data1)
     }
 }
 
