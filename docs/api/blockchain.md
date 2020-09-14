@@ -33,3 +33,58 @@ Successful response
     }
 }
 ```
+
+## GET CirculatingSupply
+
+Request for getting blockchain information.
+
+Method URL: `/api/blockchain/circulatingSupply`
+
+HTTP method: `GET`
+
+Response
+
+| Parameter | Type                                            | Description                      |
+|-----------|-------------------------------------------------|----------------------------------|
+| success   | boolean                                         | Operation status                 |
+| data      | [Blockchain Info](../model.md#blockchain-info) | Blockchain information           |
+
+### GET CirculatingSupply EXAMPLES
+
+Successful response
+
+```json
+{
+    "success": true,
+    "data": {
+       "circulatingSupply": 928013305770000,
+       }
+}
+```
+## GET TotalSupply
+
+Request for getting blockchain information.
+
+Method URL: `/api/blockchain/totalSupply`
+
+HTTP method: `GET`
+
+Response
+
+| Parameter | Type                                            | Description                      |
+|-----------|-------------------------------------------------|----------------------------------|
+| success   | boolean                                         | Operation status                 |
+| data      | [Blockchain Info](../model.md#blockchain-info) | Blockchain information           |
+
+### GET CirculatingSupply EXAMPLES
+
+Successful response
+
+```json
+{
+    "success": true,
+    "data": {
+      "totalSupply": 4500000000000000
+       }
+}
+```
