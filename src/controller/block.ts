@@ -53,6 +53,7 @@ export class BlockController {
             }
             return res.send(data2)
         }
+        return res.send('hello')
     }
 
     async getLast(_req: Request, res: Response): Promise<Response> {
