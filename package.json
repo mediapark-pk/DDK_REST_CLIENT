@@ -39,6 +39,7 @@
     "socket.io-client": "^2.2.0",
     "sodium-native": "^2.4.9",
     "uuid": "^3.3.2",
+    "ws": "^7.3.1",
     "z-schema": "^4.1.0"
   },
   "devDependencies": {
