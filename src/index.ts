@@ -31,6 +31,6 @@ app.use('/api/system', systemRouter);
 app.use('/api/airdrop',airdropRouter);
 app.use('/api/asset',assetRouter);
 
-app.listen(3000, () => {
-    console.log(`[DDK][RestAPI] Listening on port 3000!`);
+app.listen(process.env.SERVER_PORT, () => {
+    console.log(`[DDK][RestAPI] Listening on port ${process.env.SERVER_PORT}!`);
 });
