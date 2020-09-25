@@ -2,14 +2,6 @@
 
 Basic models are [here](https://github.com/AraiEzzra/DDKCORE/blob/master/docs/api/models.md)
 
-## Transactions Filter
-
-| Parameter        | Type   | Description           |
-|------------------|--------|-----------------------|
-| type         | [Transaction Type](https://github.com/AraiEzzra/DDKCORE/blob/master/docs/api/models.md#transaction-types) | Transaction type |
-| blockId     | string | Block Id |
-| senderPublicKey     | string | Sender public key |
-
 ## Vote Types
 
 | Name      | Value |
@@ -130,11 +122,6 @@ Type `string`
 | totalStakeHolders | number | Total stake holders     |
 | transactionsCount | number | Transactions count      |
 
-## Blocks filter
-
-| Parameter        | Type   | Description           |
-|------------------|--------|-----------------------|
-| height           | number | Block height          |
 
 ## Create Account Data
 

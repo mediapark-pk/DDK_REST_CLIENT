@@ -61,6 +61,7 @@ export class BlockController {
                     "Missing required property: limit"
                 ]
             }
+            return res.send(data2)
         }
         // return res.send(response);
     }
