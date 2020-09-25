@@ -144,7 +144,6 @@ Body parameters
 
 | Parameter | Type                                            | Is Required | Description                |
 |-----------|-------------------------------------------------|-------------|----------------------------|
-| filter    | [Transactions Filter](../model.md#transactions-filter) | -           | Filter |
 | sort      | array<[Sort](../model.md#sort)>                   | -           | Sort                       |
 | limit     | number                                          | +           | Limit                      |
 | offset    | number                                          | +           | Offset                     |
@@ -163,11 +162,6 @@ Request body
 
 ```json
 {
-   "filter":{
-      "sender_public_key":"f4ae589b02f97e9ab5bce61cf187bcc96cfb3fdf9a11333703a682b7d47c8dc2",
-      "block_id":"2313006c8b7f5a628ef5a085d7b8ddb37244dcbe24452da12801bf69870e4e0d",
-      "type":10
-   },
    "sort":[
       [
          "createdAt",
