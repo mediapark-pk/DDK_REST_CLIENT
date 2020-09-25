@@ -74,8 +74,7 @@ export class TransactionController {
                 "success": false,
                 "errors": [
                     "Invalid arguments",
-                    "Missing required property: offset",
-                    "Missing required property: limit"
+                    "Value 101 is greater than maximum 100"
                 ]
             }
             return res.send(data2);
