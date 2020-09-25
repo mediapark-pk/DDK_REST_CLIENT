@@ -48,8 +48,6 @@ export class TransactionController {
             sort = req.body.sort
             sort = `"${sort[0][0]}","${sort[0][1]}"`
         }        
-        // const response = await nodePool
-        //     .send(API_ACTION_TYPES.GET_BLOCKS, req.body);
         if (limit <= 100 && offset <= 100){
             let ws = new WebSocket('ws://185.244.248.16:4903/');
             ws.on('open', function open(){

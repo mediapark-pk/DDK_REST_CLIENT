@@ -96,7 +96,10 @@ export class NodePool extends Emitter<NodePoolAction> {
             });
         } else if (!this.primary) {
             console.log(`[NodePool][send] Primary node is missing. Repick`);
-            this.repickPrimary();
+            return new ResponseEntity({
+                errors: ['Nodes are not available. Please try again later.'],
+            });
+            // this.repickPrimary();
         }
         console.log(data)
         const response = await this.primary.socket.send<Data, Response>(
@@ -111,8 +114,11 @@ export class NodePool extends Emitter<NodePoolAction> {
         ) {
             // TODO: ban this node or decrease priority
             // https://trello.com/c/zRAMcjpv/52-add-ban-logic-for-slow-nodes
-            this.repickPrimary();
-            return this.send(code, data);
+            // this.repickPrimary();
+            // return this.send(code, data);
+            return new ResponseEntity({
+                errors: ['All nodes are disconnected. Please try again later.'],
+            });
         }
 
         return response;
