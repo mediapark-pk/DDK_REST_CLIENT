@@ -42,6 +42,7 @@ export class BlockController {
             });
             ws.on('message', function incoming(event) {                
                 response = JSON.parse(event.toString());
+                for (let i = 1 ; i<= limit; i++){
                     data2 = {
                         "success": true,
                         "data": {
@@ -49,6 +50,7 @@ export class BlockController {
                         },
                         "count": response.data.body.data.totalCount
                     };
+                }
                 ws.close();
                 return res.send(data2);
             });
