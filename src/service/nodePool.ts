@@ -10,13 +10,14 @@ import { Emitter } from 'src/shared/emitter';
 export enum NodePoolAction {
     repick = 'repick',
 }
-
+var count:number = 0
 export class NodePool extends Emitter<NodePoolAction> {
     private readonly nodes: Array<Node>;
     private readonly nodeComparator: Comparator<Node>;
     private readonly nodeSwitchHeightThreshold: number = 3;
     private readonly initialPickTimeout: number = 3000;
     private primary: Node;
+
 
     constructor(nodes: Array<Node>, nodeComparator: Comparator<Node>) {
         super();
@@ -114,11 +115,15 @@ export class NodePool extends Emitter<NodePoolAction> {
         ) {
             // TODO: ban this node or decrease priority
             // https://trello.com/c/zRAMcjpv/52-add-ban-logic-for-slow-nodes
-            // this.repickPrimary();
-            // return this.send(code, data);
-            return new ResponseEntity({
-                errors: ['All nodes are disconnected. Please try again later.'],
-            });
+            if (count == 3){
+                return new ResponseEntity({
+                    errors: ['All nodes are disconnected. Please try again later.'],
+                });
+            }
+            // this.repickPrimary();\
+            count = count +1
+            return this.send(code, data);
+            
         }
 
         return response;
