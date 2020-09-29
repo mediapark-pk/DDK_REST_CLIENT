@@ -35,14 +35,13 @@ export class BlockController {
             let ws = new WebSocket('ws://185.244.248.16:4903/');
             ws.on('open', function open(){
                 if(sort != null){
-                ws.send(`{"event":"message","data":{"code":"GET_TRANSACTIONS","headers":{"id":"652f52d3-b2c1-43be-9307-1e28bb9c5c66","type":"request"},"body":{"paginator":{"limit":10,"offset":0},"sort":[[${sort}]]}}}`);
+                ws.send(`{"event":"message","data":{"code":"GET_TRANSACTIONS","headers":{"id":"652f52d3-b2c1-43be-9307-1e28bb9c5c66","type":"request"},"body":{"paginator":{"limit":${limit},"offset":${offset}},"sort":[[${sort}]]}}}`);
                 }else{
                 ws.send(`{"event":"message","data":{"code":"GET_BLOCKS","headers":{"id":"3c5ec5a2-993c-41c8-b082-882bb69d5a16","type":"request"},"body":{"paginator":{"limit":${limit},"offset":${offset}},"sort":[["createdAt","desc"]]}}}`);
                 }
             });
             ws.on('message', function incoming(event) {                
                 response = JSON.parse(event.toString());
-                for (let i = 1 ; i<= limit; i++){
                     data2 = {
                         "success": true,
                         "data": {
@@ -50,7 +49,6 @@ export class BlockController {
                         },
                         "count": response.data.body.data.totalCount
                     };
-                }
                 ws.close();
                 return res.send(data2);
             });
