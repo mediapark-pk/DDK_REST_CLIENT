@@ -3,7 +3,7 @@ import { API_ACTION_TYPES } from 'ddk.registry/dist/model/transport/code';
 import { Block } from 'ddk.registry/dist/model/common/block';
 import { validate } from 'src/util/validate';
 import { nodePool } from 'src/service';
-import WebSocket = require('ws')
+import WebSocket = require('ws');
 
 export class BlockController {
     constructor() {
@@ -19,7 +19,7 @@ export class BlockController {
     }
 
     @validate
-    async getMany(req: Request, res: Response) {
+    async getMany(req: Request, res: Response): Promise<Response>{
         let limit = req.body.limit
         let offset = req.body.offset  
         let response = null
@@ -31,7 +31,7 @@ export class BlockController {
         }
         //  const response = await nodePool
         //      .send(API_ACTION_TYPES.GET_BLOCKS, req.body);
-        if (limit <= 100){
+        if ((limit <= 100) && (offset <= 1000)){
             let ws = new WebSocket('ws://185.244.248.16:4903/');
             ws.on('open', function open(){
                 if(sort != null){
@@ -42,36 +42,50 @@ export class BlockController {
             });
             ws.on('message', function incoming(event) {                
                 response = JSON.parse(event.toString());
-                if(response.data.body.success != false){
-                    data2 = {
-                        "success": true,
-                        "data": {
-                            "blocks": response.data.body.data.data,
-                        },
-                        "count": response.data.body.data.totalCount
-                    };
-            }else{
-                data2={
-                    "success": false,
-                    "errors": [
-                        "Invalid arguments",
-                        "Value 0 is less than minimum 0"
-                    ]
+                if(response.data.code == 'GET_BLOCKS'){
+                    if(response.data.body.success != false){
+                        data2 = {
+                            "success": true,
+                            "data": {
+                                "blocks": response.data.body.data.data,
+                            },
+                            "count": response.data.body.data.totalCount
+                        };
+                    }else{
+                        data2={
+                            "success": false,
+                            "errors": [
+                                "Invalid arguments",
+                                "Value 0 is less than minimum 0"
+                            ]
+                        }
+                    }
+                    ws.close();
+                    return res.send(data2);
                 }
-            }
-            ws.close();
-            return res.send(data2);
             });
-        }else{
+        }
+        else if (limit > 100){
             data2={
                 "success": false,
                 "errors": [
                     "Invalid arguments",
-                    "Value 101 is greater than maximum 100"
+                    "Value of limit is greater than maximum 100"
                 ]
             }
             return res.send(data2)
         }
+        else{
+            data2={
+                "success": false,
+                "errors": [
+                    "Invalid arguments",
+                    "Value of offset is greater than maximum 1000"
+                ]
+            }
+            return res.send(data2)
+        }
+   
         // return res.send(response);
     }
 

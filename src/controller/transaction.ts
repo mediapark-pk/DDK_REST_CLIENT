@@ -32,7 +32,7 @@ export class TransactionController {
     }
 
     @validate
-    getMany(req: Request, res: Response) {
+    async getMany(req: Request, res: Response) {
         // const response = await nodePool.send(
         //     API_ACTION_TYPES.GET_TRANSACTIONS,
         //     req.body,
@@ -68,13 +68,8 @@ export class TransactionController {
                         "count": response.data.body.data.totalCount
                     };
                 }else{
-                    data2={
-                        "success": false,
-                        "errors": [
-                            "Invalid arguments",
-                            "Value 0 is less than minimum 0"
-                        ]
-                    }
+                    ws.close();
+                    return res.send(response.data.body);
                 }
                 ws.close();
                 return res.send(data2);
@@ -89,7 +84,7 @@ export class TransactionController {
             }
             return res.send(data2);
         }
-        // return res.send(data2);
+        //  return res.send(response);
     }
 
     @validate
