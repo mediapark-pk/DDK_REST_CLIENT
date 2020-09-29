@@ -48,7 +48,7 @@ export class TransactionController {
             sort = req.body.sort
             sort = `"${sort[0][0]}","${sort[0][1]}"`
         }        
-        if (limit <= 100 && offset <= 100){
+        if (limit <= 100){
             let ws = new WebSocket('ws://185.244.248.16:4903/');
             ws.on('open', function open(){
                 if(sort != null){
@@ -59,14 +59,22 @@ export class TransactionController {
             });
             ws.on('message', function incoming(event) {                
                 response = JSON.parse(event.toString());
-                for (let i = 1 ; i<= limit; i++){
-                    data2 = {
+                if(response.data.body.success != false){
+                        data2 = {
                         "success": true,
                         "data": {
                             "transactions": response.data.body.data.data,
                         },
                         "count": response.data.body.data.totalCount
                     };
+                }else{
+                    data2={
+                        "success": false,
+                        "errors": [
+                            "Invalid arguments",
+                            "Value 0 is less than minimum 0"
+                        ]
+                    }
                 }
                 ws.close();
                 return res.send(data2);
