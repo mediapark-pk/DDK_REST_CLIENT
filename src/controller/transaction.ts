@@ -9,7 +9,10 @@ import { validate } from 'src/util/validate';
 import { transactionService } from 'src/service';
 import { transactionRepository } from 'src/repository';
 import { HTTP_STATUS } from 'src/util/http';
-import WebSocket = require('ws')
+import WebSocket = require('ws');
+const NodeCache = require( "node-cache" );
+
+const myCache = new NodeCache();
 
 
 export class TransactionController {
@@ -39,6 +42,7 @@ export class TransactionController {
         // );
 
         // return res.send(response);
+        var date = new Date();
         let limit = req.body.limit
         let offset = req.body.offset  
         let response = null
@@ -48,8 +52,10 @@ export class TransactionController {
             sort = req.body.sort
             sort = `"${sort[0][0]}","${sort[0][1]}"`
         }     
-        console.log(`Request at: Get Many Transactions with {{${limit}, ${offset}}}`);
+        console.log(`Request at: Get Many Transactions with {{${limit}, ${offset}}}, time: ${date}`);
         if (limit <= 50){
+            let value = myCache.get('transactions');
+            if(value == undefined){
             let ws = new WebSocket('ws://185.244.248.16:4903/');
             ws.on('open', function open(){
                 if(sort != null){
@@ -72,9 +78,14 @@ export class TransactionController {
                     ws.close();
                     return res.send(response.data.body);
                 }
+                let success=myCache.set('transactions',data2, 100)
+                            console.log(success);
                 ws.close();
                 return res.send(data2);
             });
+        }else{
+            return res.send(value);
+        }
         }else{
             data2={
                 "success": false,

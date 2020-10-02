@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-
+const rateLimit = require("express-rate-limit");
 import 'src/config';
 import 'src/service';
 
@@ -14,9 +14,12 @@ import { blockchainRouter } from 'src/router/blockchain';
 import { airdropRouter } from './router/airdropHistory';
 import { assetRouter } from './router/asset';
 import { delegatesRouter } from './router/delegates';
-
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100 // limit each IP to 100 requests per windowMs
+  });
 const app = express();
-
+app.use(limiter)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 

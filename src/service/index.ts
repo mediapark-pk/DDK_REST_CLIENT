@@ -25,6 +25,7 @@ import { Node } from 'src/model/node';
 import { SocketListenerManager } from 'src/service/socketListenerManager';
 import { nodeComparator } from 'src/util/comparator/node';
 
+
 export const blockchainService = new BlockchainService(blockchainRepository);
 export const systemService = new SystemService(systemRepository);
 export const accountService = new AccountService();

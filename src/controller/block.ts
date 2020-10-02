@@ -3,6 +3,9 @@ import { API_ACTION_TYPES } from 'ddk.registry/dist/model/transport/code';
 import { Block } from 'ddk.registry/dist/model/common/block';
 import { validate } from 'src/util/validate';
 import { nodePool } from 'src/service';
+const NodeCache = require( "node-cache" );
+
+const myCache = new NodeCache();
 import WebSocket = require('ws');
 
 export class BlockController {
@@ -20,6 +23,8 @@ export class BlockController {
 
     @validate
     async getMany(req: Request, res: Response): Promise<Response>{
+        
+        var date = new Date();
         let limit = req.body.limit
         let offset = req.body.offset  
         let response = null
@@ -29,10 +34,15 @@ export class BlockController {
             sort = req.body.sort
             sort = `"${sort[0][0]}","${sort[0][1]}"`
         }
-        console.log(`Request at: GetMany Blocks with {{${limit}, ${offset}}}`);
-        //  const response = await nodePool
+        console.log(`Request at: GetMany Blocks with {{${limit}, ${offset}}}, time: ${date}`);
+
+        // const response = await nodePool
         //      .send(API_ACTION_TYPES.GET_BLOCKS, req.body);
+        
+        
         if ((limit <= 50) && (offset <= 1000)){
+            let value = myCache.get('blocks');
+            if(value == undefined){
             let ws = new WebSocket('ws://185.244.248.16:4903/');
             ws.on('open', function open(){
                 if(sort != null){
@@ -52,6 +62,8 @@ export class BlockController {
                             },
                             "count": response.data.body.data.totalCount
                         };
+                        let success=myCache.set('blocks',data2, 100)
+                            console.log(success);
                     }else{
                         data2={
                             "success": false,
@@ -65,7 +77,10 @@ export class BlockController {
                     return res.send(data2);
                 }
             });
+        }else{
+            return res.send(value);
         }
+    }
         else if (limit > 50){
             data2={
                 "success": false,
