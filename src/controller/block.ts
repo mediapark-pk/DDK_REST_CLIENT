@@ -66,7 +66,7 @@ export class BlockController {
                 }
             });
         }
-        else if (limit > 100){
+        else if (limit > 50){
             data2={
                 "success": false,
                 "errors": [
