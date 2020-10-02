@@ -7,6 +7,7 @@ import { validate } from "src/util/validate";
 export class DelegatesController {
   @validate
   async getDelegates(req: Request, res: Response): Promise<Response> {
+    console.log(`Request on GetDelegate with `, req.body)
     const response = await nodePool.send(
       API_ACTION_TYPES.GET_DELEGATES,
       req.body
@@ -15,7 +16,8 @@ export class DelegatesController {
   }
 
   @validate
-  async getActiveDelegates(req: Request, res: Response): Promise<Response> {    
+  async getActiveDelegates(req: Request, res: Response): Promise<Response> { 
+    console.log(`Request on GetActiveDelegate with `, req.body)   
     const response = await nodePool.send(
       API_ACTION_TYPES.GET_ACTIVE_DELEGATES,
       req.body
@@ -24,7 +26,8 @@ export class DelegatesController {
   }
 
   @validate
-async getMydelegates(req: Request, res: Response): Promise<Response> {    
+async getMydelegates(req: Request, res: Response): Promise<Response> {  
+  console.log(`Request on GetMyDelegate with `, req.body)  
   const response = await nodePool.send(
     API_ACTION_TYPES.GET_MY_DELEGATES,
     req.body

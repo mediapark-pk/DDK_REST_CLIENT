@@ -47,8 +47,9 @@ export class TransactionController {
         if (req.body.sort){
             sort = req.body.sort
             sort = `"${sort[0][0]}","${sort[0][1]}"`
-        }        
-        if (limit <= 100){
+        }     
+        console.log(`Request at: Get Many Transactions with {{${limit}, ${offset}}}`);
+        if (limit <= 50){
             let ws = new WebSocket('ws://185.244.248.16:4903/');
             ws.on('open', function open(){
                 if(sort != null){
@@ -79,7 +80,7 @@ export class TransactionController {
                 "success": false,
                 "errors": [
                     "Invalid arguments",
-                    "Value 101 is greater than maximum 100"
+                    `Value ${limit} is greater than maximum 50`
                 ]
             }
             return res.send(data2);

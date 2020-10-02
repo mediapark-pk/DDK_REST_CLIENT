@@ -29,9 +29,10 @@ export class BlockController {
             sort = req.body.sort
             sort = `"${sort[0][0]}","${sort[0][1]}"`
         }
+        console.log(`Request at: GetMany Blocks with {{${limit}, ${offset}}}`);
         //  const response = await nodePool
         //      .send(API_ACTION_TYPES.GET_BLOCKS, req.body);
-        if ((limit <= 100) && (offset <= 1000)){
+        if ((limit <= 50) && (offset <= 1000)){
             let ws = new WebSocket('ws://185.244.248.16:4903/');
             ws.on('open', function open(){
                 if(sort != null){
@@ -70,7 +71,7 @@ export class BlockController {
                 "success": false,
                 "errors": [
                     "Invalid arguments",
-                    "Value of limit is greater than maximum 100"
+                    `Value of ${limit} is greater than maximum 50`
                 ]
             }
             return res.send(data2)
@@ -80,7 +81,7 @@ export class BlockController {
                 "success": false,
                 "errors": [
                     "Invalid arguments",
-                    "Value of offset is greater than maximum 1000"
+                    `Value of ${offset} is greater than maximum 1000`
                 ]
             }
             return res.send(data2)
