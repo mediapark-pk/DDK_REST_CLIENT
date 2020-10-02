@@ -40,7 +40,7 @@ export class BlockController {
         //      .send(API_ACTION_TYPES.GET_BLOCKS, req.body);
         
         
-        if ((limit <= 50) && (offset <= 1000)){
+        if ((limit <= 100) && (offset <= 1000)){
             let value = myCache.get('blocks');
             if(value == undefined){
             let ws = new WebSocket('ws://185.244.248.16:4903/');
@@ -81,7 +81,7 @@ export class BlockController {
             return res.send(value);
         }
     }
-        else if (limit > 50){
+        else if (limit > 100){
             data2={
                 "success": false,
                 "errors": [

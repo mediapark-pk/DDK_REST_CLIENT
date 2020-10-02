@@ -53,7 +53,7 @@ export class TransactionController {
             sort = `"${sort[0][0]}","${sort[0][1]}"`
         }     
         console.log(`Request at: Get Many Transactions with {{${limit}, ${offset}}}, time: ${date}`);
-        if (limit <= 50){
+        if (limit <= 100){
             let value = myCache.get('transactions');
             if(value == undefined){
             let ws = new WebSocket('ws://185.244.248.16:4903/');
