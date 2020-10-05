@@ -13,7 +13,13 @@ import { blockchainRouter } from 'src/router/blockchain';
 import { airdropRouter } from './router/airdropHistory';
 import { assetRouter } from './router/asset';
 import { delegatesRouter } from './router/delegates';
+const rateLimit = require("express-rate-limit");
 const app = express();
+const limiter = rateLimit({
+    windowMs: 10 *1000, // 15 minutes
+    max: 3 // limit each IP to 100 requests per windowMs
+  });
+app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
