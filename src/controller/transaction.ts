@@ -78,7 +78,7 @@ export class TransactionController {
                     ws.close();
                     return res.send(response.data.body);
                 }
-                let success=myCache.set(`transactions with limit ${limit} and offset ${offset}`,data2, 900)
+                let success=myCache.set(`transactions with limit ${limit} and offset ${offset}`,data2, 3600)
                             console.log(success);
                 ws.close();
                 return res.send(data2);

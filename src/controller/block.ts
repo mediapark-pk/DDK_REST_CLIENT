@@ -61,15 +61,15 @@ export class BlockController {
                             },
                             "count": response.data.body.data.totalCount
                         };
-                        let success=myCache.set(`blocks with limit ${limit} and offset ${offset}`,data2, 900)
+                        let success=myCache.set(`blocks with limit ${limit} and offset ${offset}`,data2, 3600)
                             console.log(success);
                     }else{
                         data2={
                             "success": false,
-                            "errors": [
-                                "Invalid arguments",
-                                "Value 0 is less than minimum 0"
-                            ]
+                            "data": {
+                                "blocks": [],
+                            },
+                            "count": 0
                         }
                     }
                     ws.close();
