@@ -18,9 +18,10 @@ const app = express();
 const limiter = rateLimit({
     windowMs: 10 * 1000, // 15 minutes
     max: 3, // limit each IP to 100 requests per windowMs
-    message:
-    "Too many request created from this IP, please try again after 10 seconds"
-
+    message:{
+      "success": false,
+                "data": ["Too many request, Please try again in 10 seconds"]
+    }
   });
 app.use(limiter);
 app.use(bodyParser.json());
