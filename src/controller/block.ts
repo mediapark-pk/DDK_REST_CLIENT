@@ -22,8 +22,7 @@ export class BlockController {
     }
 
     @validate
-    async getMany(req: Request, res: Response): Promise<Response>{
-        
+    async getMany(req: Request, res: Response){
         var date = new Date();
         let limit = req.body.limit
         let offset = req.body.offset  
@@ -41,7 +40,7 @@ export class BlockController {
         
         
         if ((limit <= 100) && (offset <= 1000)){
-            let value = myCache.get('blocks');
+            let value = myCache.get(`blocks with limit ${limit} and offset ${offset}`);
             if(value == undefined){
             let ws = new WebSocket('ws://185.244.248.16:4903/');
             ws.on('open', function open(){
@@ -62,7 +61,7 @@ export class BlockController {
                             },
                             "count": response.data.body.data.totalCount
                         };
-                        let success=myCache.set('blocks',data2, 100)
+                        let success=myCache.set(`blocks with limit ${limit} and offset ${offset}`,data2, 900)
                             console.log(success);
                     }else{
                         data2={

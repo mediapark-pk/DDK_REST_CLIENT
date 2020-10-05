@@ -54,7 +54,7 @@ export class TransactionController {
         }     
         console.log(`Request at: Get Many Transactions with {{${limit}, ${offset}}}, time: ${date}`);
         if (limit <= 100){
-            let value = myCache.get('transactions');
+            let value = myCache.get(`transactions with limit ${limit} and offset ${offset}`);
             if(value == undefined){
             let ws = new WebSocket('ws://185.244.248.16:4903/');
             ws.on('open', function open(){
@@ -78,7 +78,7 @@ export class TransactionController {
                     ws.close();
                     return res.send(response.data.body);
                 }
-                let success=myCache.set('transactions',data2, 100)
+                let success=myCache.set(`transactions with limit ${limit} and offset ${offset}`,data2, 900)
                             console.log(success);
                 ws.close();
                 return res.send(data2);
