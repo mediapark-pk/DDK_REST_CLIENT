@@ -20,7 +20,7 @@ const limiter = rateLimit({
     max: 3, // limit each IP to 100 requests per windowMs
     message:{
       "success": false,
-                "data": ["Too many request, Please try again in 10 seconds"]
+                "message": "Too many request, Please try again in 10 seconds"
     }
   });
 app.use(limiter);
