@@ -115,14 +115,14 @@ export class NodePool extends Emitter<NodePoolAction> {
         ) {
             // TODO: ban this node or decrease priority
             // https://trello.com/c/zRAMcjpv/52-add-ban-logic-for-slow-nodes
-            if (count == 2){
+            if (count == 5){
                 return new ResponseEntity({
                     errors: ['All nodes are disconnected. Please try again later.'],
                 });
             }
             // this.repickPrimary();
-            // count = count +1
-            // return this.send(code, data);
+            count = count +1
+            return this.send(code, data);
             
         }
 
