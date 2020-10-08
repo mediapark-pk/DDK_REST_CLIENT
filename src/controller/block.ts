@@ -110,6 +110,13 @@ export class BlockController {
 
         return res.send(response);
     }
+    async getFees(_req: Request, res: Response): Promise<Response> {
+        const response = await nodePool
+            .send(API_ACTION_TYPES.GET_FEES, {});
+
+        return res.send(response);
+    }
+    
 }
 
 export const blockController = new BlockController();
