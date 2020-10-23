@@ -97,10 +97,7 @@ export class NodePool extends Emitter<NodePoolAction> {
             });
         } else if (!this.primary) {
             console.log(`[NodePool][send] Primary node is missing. Repick`);
-            return new ResponseEntity({
-                errors: ['Nodes are not available. Please try again later.'],
-            });
-            // this.repickPrimary();
+            this.repickPrimary();
         }
         console.log(data)
         const response = await this.primary.socket.send<Data, Response>(
@@ -121,7 +118,7 @@ export class NodePool extends Emitter<NodePoolAction> {
                     errors: ['All nodes are disconnected. Please try again later.'],
                 });
             }
-            // this.repickPrimary();
+            this.repickPrimary();
             count = count +1
             return this.send(code, data);
             

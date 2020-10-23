@@ -1,0 +1,7 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DEFAULT_SSL_PORT = 443;
+exports.DEFAULT_SOCKET_TIMEOUT = 2000;
+exports.DEFAULT_SOCKET_EVENT = 'message';
+exports.DEFAULT_NUMBER_OF_CONFIRMATIONS = 6;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29uc3QuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9zcmMvY29uc3QudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBYSxRQUFBLGdCQUFnQixHQUFHLEdBQUcsQ0FBQztBQUN2QixRQUFBLHNCQUFzQixHQUFHLElBQUksQ0FBQztBQUM5QixRQUFBLG9CQUFvQixHQUFHLFNBQVMsQ0FBQztBQUNqQyxRQUFBLCtCQUErQixHQUFHLENBQUMsQ0FBQyJ9

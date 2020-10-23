@@ -1,0 +1,77 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const chai_1 = require("chai");
+const node_1 = require("src/util/comparator/node");
+describe('Node Comparator', () => {
+    it('Returns 0 when both nodes are connected and are on the same height', () => {
+        const a = { height: 500, isConnected: true };
+        const b = { height: 500, isConnected: true };
+        const expected = 0;
+        const actual = node_1.nodeComparator.compare(a, b);
+        chai_1.expect(expected).to.deep.equal(actual);
+    });
+    it('Returns 0 when both nodes are disconnected and are on the same height', () => {
+        const a = { height: 500, isConnected: false };
+        const b = { height: 500, isConnected: false };
+        const expected = 0;
+        const actual = node_1.nodeComparator.compare(a, b);
+        chai_1.expect(expected).to.deep.equal(actual);
+    });
+    it('Returns -1 when node A is connected and has height less than node B and node B is disconnected', () => {
+        const a = { height: 100, isConnected: true };
+        const b = { height: 500, isConnected: false };
+        const expected = -1;
+        const actual = node_1.nodeComparator.compare(a, b);
+        chai_1.expect(expected).to.deep.equal(actual);
+    });
+    it('Returns -1 when node A is connected and has height more than node B and node B is disconnected', () => {
+        const a = { height: 500, isConnected: true };
+        const b = { height: 100, isConnected: false };
+        const expected = -1;
+        const actual = node_1.nodeComparator.compare(a, b);
+        chai_1.expect(expected).to.deep.equal(actual);
+    });
+    it('Returns 1 when node A is disconnected and has height more than node B and node B is connected', () => {
+        const a = { height: 500, isConnected: false };
+        const b = { height: 100, isConnected: true };
+        const expected = 1;
+        const actual = node_1.nodeComparator.compare(a, b);
+        chai_1.expect(expected).to.deep.equal(actual);
+    });
+    it('Returns 1 when node A is disconnected and has height less than node B and node B is connected', () => {
+        const a = { height: 100, isConnected: false };
+        const b = { height: 500, isConnected: true };
+        const expected = 1;
+        const actual = node_1.nodeComparator.compare(a, b);
+        chai_1.expect(expected).to.deep.equal(actual);
+    });
+    it('Returns 1 when node A is connected and has height less than node B and node B is connected', () => {
+        const a = { height: 100, isConnected: true };
+        const b = { height: 500, isConnected: true };
+        const expected = 1;
+        const actual = node_1.nodeComparator.compare(a, b);
+        chai_1.expect(expected).to.deep.equal(actual);
+    });
+    it('Returns -1 when node A is connected and has height more than node B and node B is connected', () => {
+        const a = { height: 500, isConnected: true };
+        const b = { height: 100, isConnected: true };
+        const expected = -1;
+        const actual = node_1.nodeComparator.compare(a, b);
+        chai_1.expect(expected).to.deep.equal(actual);
+    });
+    it('Returns -1 when node A is disconnected and has height more than node B and node B is disconnected', () => {
+        const a = { height: 500, isConnected: false };
+        const b = { height: 100, isConnected: false };
+        const expected = -1;
+        const actual = node_1.nodeComparator.compare(a, b);
+        chai_1.expect(expected).to.deep.equal(actual);
+    });
+    it('Returns 1 when node A is disconnected and has height less than node B and node B is disconnected', () => {
+        const a = { height: 100, isConnected: false };
+        const b = { height: 500, isConnected: false };
+        const expected = 1;
+        const actual = node_1.nodeComparator.compare(a, b);
+        chai_1.expect(expected).to.deep.equal(actual);
+    });
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXgudGVzdC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NyYy91dGlsL2NvbXBhcmF0b3Ivbm9kZS9pbmRleC50ZXN0LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsK0JBQThCO0FBRzlCLG1EQUEwRDtBQUUxRCxRQUFRLENBQUMsaUJBQWlCLEVBQUUsR0FBRyxFQUFFO0lBQzdCLEVBQUUsQ0FBQyxvRUFBb0UsRUFBRSxHQUFHLEVBQUU7UUFDMUUsTUFBTSxDQUFDLEdBQVUsRUFBRSxNQUFNLEVBQUUsR0FBRyxFQUFFLFdBQVcsRUFBRSxJQUFJLEVBQUUsQ0FBQztRQUNwRCxNQUFNLENBQUMsR0FBVSxFQUFFLE1BQU0sRUFBRSxHQUFHLEVBQUUsV0FBVyxFQUFFLElBQUksRUFBRSxDQUFDO1FBQ3BELE1BQU0sUUFBUSxHQUFHLENBQUMsQ0FBQztRQUNuQixNQUFNLE1BQU0sR0FBRyxxQkFBYyxDQUFDLE9BQU8sQ0FBQyxDQUFDLEVBQUUsQ0FBQyxDQUFDLENBQUM7UUFFNUMsYUFBTSxDQUFDLFFBQVEsQ0FBQyxDQUFDLEVBQUUsQ0FBQyxJQUFJLENBQUMsS0FBSyxDQUFDLE1BQU0sQ0FBQyxDQUFDO0lBQzNDLENBQUMsQ0FBQyxDQUFDO0lBRUgsRUFBRSxDQUFDLHVFQUF1RSxFQUFFLEdBQUcsRUFBRTtRQUM3RSxNQUFNLENBQUMsR0FBVSxFQUFFLE1BQU0sRUFBRSxHQUFHLEVBQUUsV0FBVyxFQUFFLEtBQUssRUFBRSxDQUFDO1FBQ3JELE1BQU0sQ0FBQyxHQUFVLEVBQUUsTUFBTSxFQUFFLEdBQUcsRUFBRSxXQUFXLEVBQUUsS0FBSyxFQUFFLENBQUM7UUFDckQsTUFBTSxRQUFRLEdBQUcsQ0FBQyxDQUFDO1FBQ25CLE1BQU0sTUFBTSxHQUFHLHFCQUFjLENBQUMsT0FBTyxDQUFDLENBQUMsRUFBRSxDQUFDLENBQUMsQ0FBQztRQUU1QyxhQUFNLENBQUMsUUFBUSxDQUFDLENBQUMsRUFBRSxDQUFDLElB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
