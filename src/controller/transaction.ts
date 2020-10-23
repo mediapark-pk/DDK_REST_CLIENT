@@ -99,7 +99,7 @@ export class TransactionController {
         //  return res.send(response);
     }
 
-    @validate
+    // @validate
     async create(req: Request, res: Response): Promise<Response> {
         const transactionData: TransactionData = {
             ...req.body.transaction,
