@@ -16,13 +16,13 @@ import { delegatesRouter } from './router/delegates';
 const rateLimit = require("express-rate-limit");
 const app = express();
 const limiter = rateLimit({
-    windowMs: 10 * 1000, // 15 minutes
-    max: 3, // limit each IP to 100 requests per windowMs
-    message:{
-      "success": false,
-                "message": "Too many request, Please try again in 10 seconds"
-    }
-  });
+  windowMs: 300 * 1000, // 5 minutes
+  max: 3, // limit each IP to 100 requests per windowMs
+  message:{
+    "success": false,
+              "message": "Too many request, Please try again in 5 minutes"
+  }
+});
 app.use(limiter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
