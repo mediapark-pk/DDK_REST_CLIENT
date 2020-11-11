@@ -111,10 +111,17 @@ export class BlockController {
         return res.send(response);
     }
     async getFees(_req: Request, res: Response): Promise<Response> {
+        console.log('Request At Blocks Get Fees')
+        let value = myCache.get(`Request At Blocks Get Fees`);
+        if(value == undefined){
         const response = await nodePool
             .send(API_ACTION_TYPES.GET_FEES, {});
-
+        let success=myCache.set(`Request At Blocks Get Fees`,response, 43200)
+        console.log(success);
         return res.send(response);
+        }else{
+            return res.send(value)
+        }
     }
     
 }
